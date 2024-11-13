@@ -69,5 +69,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'pumpkin'
+          app-name: 'pumpkin-app-service'
           slot-name: 'Production'
