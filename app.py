@@ -3,9 +3,30 @@ import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
+from azure.storage.blob import BlobServiceClient
+import joblib
+import io
 
-# Load the trained model
-model = joblib.load('logistic_regression_model.pkl')
+# Azure Blob Storage credentials and settings
+connection_string = CONNECTION_STRING
+container_name = "dataset"
+blob_name = "logistic_regression_model.pkl"
+
+def load_model_from_blob():
+    # Initialize the BlobServiceClient
+    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=blob_name)
+
+    # Download the blob as a byte stream
+    download_stream = blob_client.download_blob()
+    model_data = download_stream.readall()
+
+    # Load the model using joblib from the byte stream
+    model = joblib.load(io.BytesIO(model_data))
+    return model
+
+# Load model
+model = load_model_from_blob()
 
 
 # Function to make predictions
