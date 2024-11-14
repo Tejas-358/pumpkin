@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from azure.storage.blob import BlobServiceClient
 import joblib
+import os
 import io
 
 # Azure Blob Storage credentials and settings
