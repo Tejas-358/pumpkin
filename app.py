@@ -9,7 +9,7 @@ import os
 import io
 
 # Azure Blob Storage credentials and settings
-connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+connection_string = "DefaultEndpointsProtocol=https;AccountName=storagepumpkin;AccountKey=H0sN/xHT0FSsLv2RofJQ+oHu0nEn+LABeoeaL80zmfW1fsrLBW7Ia77BYFyE2nWuQAKH0FnqwhyG+AStIxDkBw==;EndpointSuffix=core.windows.net"
 if not connection_string:
     raise ValueError("AZURE_STORAGE_CONNECTION_STRING environment variable is not set.")
 
