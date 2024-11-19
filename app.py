@@ -10,6 +10,9 @@ import io
 
 # Azure Blob Storage credentials and settings
 connection_string = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+if not connection_string:
+    raise ValueError("AZURE_STORAGE_CONNECTION_STRING environment variable is not set.")
+
 container_name = "dataset"
 blob_name = "logistic_regression_model.pkl"
 
